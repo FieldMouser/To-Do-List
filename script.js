@@ -49,10 +49,38 @@ function confirmAdding() {
 function taskListUpdate(){
     list.innerHTML = "";
     for (i = 0; i < tasksList.length; i++) {
+        const doneButton = document.createElement("button");
+        doneButton.textContent = "Выполнено";
+        doneButton.setAttribute('onclick', 'doneTask(' + i + ')');
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Удалить";
+        deleteButton.setAttribute('onclick', 'deleteTask(' + i + ')');
+
         const task = document.createElement("li");
         task.textContent = tasksList[i].name;
-        list.appendChild(task);
+        if (tasksList[i].status == true) {
+            task.innerHTML = "<strike>" + tasksList[i].name + "</strike>";
+        }
+        task.appendChild(deleteButton);
+        task.appendChild(doneButton);
+        list.appendChild(task);    
     }
 }
 
 taskListUpdate();
+
+function deleteTask(num) {
+    tasksList.splice(num, 1);
+    taskListUpdate();
+}
+
+function doneTask(num) {
+    if (tasksList[num].status === true) {
+        tasksList[num].status = false;
+    }
+    else {
+        tasksList[num].status = true
+    }
+    taskListUpdate();
+}
