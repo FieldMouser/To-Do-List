@@ -43,7 +43,6 @@ function confirmAdding() {
     addToDo.appendChild(addToDoButton);
     addToDo.removeChild(document.querySelector('.confirmButton'));
     addToDo.removeChild(inputElement);
-    
 }
 
 function taskListUpdate(){
@@ -80,7 +79,7 @@ function doneTask(num) {
         tasksList[num].status = false;
     }
     else {
-        tasksList[num].status = true
+        tasksList[num].status = true;
     }
     taskListUpdate();
 }
