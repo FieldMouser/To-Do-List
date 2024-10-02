@@ -33,6 +33,10 @@ function callAdding() {
     newToDo.setAttribute('type', 'text');
     newToDo.classList.add('newToDoTextbox');
     addToDo.appendChild(newToDo);
+
+    // Устанавливаем фокус на текстовом поле
+    newToDo.focus();
+    
     const confirmButton = document.createElement("button");
     confirmButton.textContent = "Подтвердить";
     confirmButton.setAttribute('onclick', 'confirmAdding()');
@@ -104,3 +108,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 taskListUpdate();
+
+document.addEventListener("keydown", function(event) {
+    if (event.code == "Enter") {
+        confirmAdding();
+    }
+});
