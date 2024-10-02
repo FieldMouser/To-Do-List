@@ -1,6 +1,20 @@
 const addToDo = document.querySelector('.newToDo');
 const list = document.querySelector(".list");
 
+// Сохранение в json
+function saveTasks() {
+    localStorage.setItem('tasksList', JSON.stringify(tasksList));
+}
+
+// загрузка из json
+function loadTasks() {
+    const savedTasks = localStorage.getItem('tasksList');
+    if (savedTasks) {
+        tasksList = JSON.parse(savedTasks);
+        taskListUpdate();
+    }
+}
+
 //Список в виде массива объектов:
 tasksList = [];
 
@@ -9,6 +23,7 @@ function taskAdd(name) {
         name: name,
         status: false
     }
+    saveTasks();
     taskListUpdate();
 }
 
@@ -67,11 +82,10 @@ function taskListUpdate(){
     }
 }
 
-taskListUpdate();
-
 function deleteTask(num) {
     tasksList.splice(num, 1);
     taskListUpdate();
+    saveTasks();
 }
 
 function doneTask(num) {
@@ -81,5 +95,12 @@ function doneTask(num) {
     else {
         tasksList[num].status = true;
     }
+    saveTasks();
     taskListUpdate();
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadTasks();
+});
+
+taskListUpdate();
