@@ -1,0 +1,116 @@
+/* Общие стили для страницы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Стили для контейнера списка задач */
+.listDiv {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Стили для заголовка */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Стили для списка задач */
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Стили для каждого элемента списка */
+.list li {
+    background: #e9ecef;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Стили для контейнера кнопок */
+.button-container {
+    display: flex;
+    gap: 10px; /* Промежуток между кнопками */
+}
+
+/* Стили для кнопок выполнения и удаления */
+.done-btn,
+.delete-btn {
+    background-color: transparent; /* Прозрачный фон по умолчанию */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+    padding: 5px;
+    transition: background-color 0.3s ease; /* Плавный переход */
+    display: flex; /* Центрируем иконки */
+    align-items: center; /* Вертикальное центрирование */
+}
+
+/* Эффект при наведении на кнопки */
+.done-btn:hover {
+    background-color: #d4edda; /* Светло-зеленый фон для "выполнено" */
+}
+
+.delete-btn:hover {
+    background-color: #f8d7da; /* Светло-красный фон для "удалить" */
+}
+
+/* Цвета иконок */
+.done-btn i {
+    color: #28a745; /* Зеленый для "выполнено" */
+}
+
+.delete-btn i {
+    color: #dc3545; /* Красный для "удалить" */
+}
+
+/* Стили для нового задания */
+.newToDo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.newToDoTextbox {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    margin-right: 10px;
+}
+
+.confirmButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.confirmButton:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для кнопки добавления новой задачи */
+.addToDo {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.addToDo:hover {
+    background-color: #1c7630;
+}

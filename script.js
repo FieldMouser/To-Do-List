@@ -66,25 +66,33 @@ function confirmAdding() {
 
 function taskListUpdate(){
     list.innerHTML = "";
-    for (i = 0; i < tasksList.length; i++) {
+    for (let i = 0; i < tasksList.length; i++) {
         const doneButton = document.createElement("button");
-        doneButton.textContent = "Выполнено";
+        doneButton.innerHTML = '<i class="fas fa-check"></i>';
         doneButton.setAttribute('onclick', 'doneTask(' + i + ')');
+        doneButton.classList.add('done-btn');
 
         const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Удалить";
+        deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
         deleteButton.setAttribute('onclick', 'deleteTask(' + i + ')');
+        deleteButton.classList.add('delete-btn');
+
+        // Создание контейнера для кнопок
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-container");
+        buttonContainer.appendChild(doneButton);
+        buttonContainer.appendChild(deleteButton);
 
         const task = document.createElement("li");
         task.textContent = tasksList[i].name;
         if (tasksList[i].status == true) {
             task.innerHTML = "<strike>" + tasksList[i].name + "</strike>";
         }
-        task.appendChild(deleteButton);
-        task.appendChild(doneButton);
+        task.appendChild(buttonContainer);
         list.appendChild(task);    
     }
 }
+
 
 function deleteTask(num) {
     tasksList.splice(num, 1);
