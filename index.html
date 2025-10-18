@@ -10,16 +10,25 @@
     
 </head>
 <body>
-    <div class="listDiv">
-        <h1>Текущие задачи:</h1>
-        <ul class="list">
-            <li>Задача 1 <button>Выполнено</button> <button>Удалить</button></li>
-        </ul>
+    <div class="taskListsDiv">
+        <h1>Мои списки задач:</h1>
+
+        <div class="newList">
+            <button class="addList" onclick="callListAdding()">Создать список задач</button>
+        </div>
+
+        <div class="listDiv">
+            <h1>Название списка задач:</h1>
+            <ul class="list">
+                <li>Задача 1 <button>Выполнено</button> <button>Удалить</button></li>
+            </ul>
+
+            <div class="newToDo">
+                <button class="addToDo" onclick="callAdding()">Добавить задачу</button>
+            </div>
+        </div>
     </div>
 
-    <div class="newToDo">
-        <button class="addToDo" onclick="callAdding()">Добавить задачу</button>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>

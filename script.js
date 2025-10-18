@@ -1,5 +1,7 @@
+const addList = document.querySelector('.newList');
 const addToDo = document.querySelector('.newToDo');
 const list = document.querySelector(".list");
+let tasksList = [];
 
 // Сохранение в json
 function saveTasks() {
@@ -9,15 +11,60 @@ function saveTasks() {
 // загрузка из json
 function loadTasks() {
     const savedTasks = localStorage.getItem('tasksList');
+    console.log(localStorage)
     if (savedTasks) {
         tasksList = JSON.parse(savedTasks);
         taskListUpdate();
     }
 }
 
-//Список в виде массива объектов:
-tasksList = [];
+// Добавление списка
+function listAdd(name) {
+    tasksList[tasksList.length] = {
+        name: name
+    }
+    saveTasks();
+    taskListUpdate();
+    console.log(tasksList)
+}
 
+function callListAdding() {
+    const newList = document.createElement("input");
+    newList.setAttribute('type', 'text');
+    newList.classList.add('newListTextbox');
+    addList.appendChild(newList);
+
+    // Устанавливаем фокус на текстовом поле
+    newList.focus();
+
+    const confirmListButton = document.createElement("button");
+    confirmListButton.textContent = "Подтвердить";
+    confirmListButton.setAttribute('onclick', 'confirmListAdding()');
+    confirmListButton.classList.add('confirmButton');
+    addList.appendChild(confirmListButton);
+    addList.removeChild(document.querySelector('.addList'));
+}
+
+function confirmListAdding() {
+    const inputElement = document.querySelector('.newListTextbox');
+    const inputValue = inputElement.value;
+
+    if (inputValue.trim() === "") {
+        alert("Введите название списка!");
+        return;
+    }
+
+    listAdd(inputValue);
+    const addListButton = document.createElement("button");
+    addListButton.textContent = "Добавить список";
+    addListButton.setAttribute('onclick', 'callListAdding()');
+    addListButton.classList.add('addList');
+    addList.appendChild(addListButton);
+    addList.removeChild(document.querySelector('.confirmButton'));
+    addList.removeChild(inputElement);
+}
+
+//Добавление задачи
 function taskAdd(name, deadline) {
     tasksList[tasksList.length] = {
         name: name,
